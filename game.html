@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VGame</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/small_icon.png">
+</head>
+<body>
+    <div id="app">
+    <header>
+       
+            <div class="container">
+                <div class="menu_header">
+                <div class="main_icon">
+                    <img src="img/main_icon.png" alt="main_logo">
+                    <h1>VGame</h1>
+                </div>
+                <div class="menu_links">
+                    <ul>
+                        <li><a href="index.html">главная</a></li>
+                        <li><a href="shop.html">магазин</a></li>
+                        <li><a href="basket.html">корзина</a></li>
+                        <li><a href="sale.html">скидки</a></li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="main_game">
+                <div class="main_game_icon">
+                    <img src="img/main_game_icon.png" alt="">
+                    <p id="main_game_cost_now">291,11 руб</p>
+                    <div class="main_game_cost_sale">
+                        <p id="main_game_economy">Экономия 92%</p>
+                        <p id="main_game_last_cost">3 499,00 руб</p>
+                    </div>
+                    <div class="dob_v_koriznu">
+                        <button v-on:click="count++" id="dob_v_korzinu_btn">Добавить в корзину {{ count }}</button>
+                    </div>
+                </div>
+                <div class="main_game_text">
+                    <p> EA SPORTS™ FIFA 20 на базе Frostbite™ воссоздает два разных аспекта главной игры мира
+                        — престиж профессионального футбола и азарт улиц в совершенно новом режиме EA SPORTS VOLTA. 
+                        В FIFA 20 система ФУТБОЛЬНОГО ИНТЕЛЛЕКТА создает реализм, в FIFA Ultimate Team™ появляются новые способы собрать
+                        состав мечты, а EA SPORTS VOLTA возвращает футбол на улицы.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
