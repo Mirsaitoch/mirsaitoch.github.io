@@ -1,0 +1,202 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html,input { font-family: 'Open Sans', sans-serif; }
+
+a { color: inherit; text-decoration: none; display: inline-block; }
+ul, h2 { font-family: 'Arian AMU', sans-serif; }
+li { list-style: none; }
+li:hover { font-weight: bolder; }
+img { display: block; max-width: 100%; }
+.container { max-width: 1170px; padding: 0 20px; margin: auto; }
+
+/*header*/
+
+.menu_header h1 { font-family: 'Alanta', sans-serif; }
+.menu_header { padding-top: 10px; margin-bottom: 50px; padding-bottom: 10px; border-bottom: 1px solid #000000; display: flex;
+     justify-content: space-between; align-items: center; }
+.main_icon { display: flex; justify-content: space-between;
+     align-items: center; font-size: 30px; }
+.main_icon img {max-width: 100px;}
+ .main_icon h1 { padding: 20px 10px 0;}
+.menu_links { width: 70%; padding: 40px 50px 0; }
+.menu_links ul{ display: flex; justify-content: space-around; font-size: 20px; }
+
+
+/*main_menu*/
+
+.main_intro { display: flex; justify-content: space-between; }
+.main_ad { width: 70%; }
+.fifa20Main { border-radius: 10px; }
+.main_sale  { height: 150px; position: relative; z-index: 1; margin-top: -149px;
+	 background: rgb(0, 0, 0, 0.7); color: #ffffff; padding-left: 20px;
+	  display: flex; align-items: center; border-radius: 0px 0px 10px 10px; }
+.main_sale h1 { font-family: 'Open Sans Condensed', sans-serif; font-size: 40px; }
+
+.ad_profile { width: 240px; height: 450px; display: flex; align-items: center; flex-direction: column;
+	 margin-right: 60px; background: #f0f0f0; padding-top: 20px; border-radius: 10px;}
+.ad_profile img { width: 60px; }
+.ad_profile h2 { width: 150px; text-align: center; margin-top: 10px; font-size: 18px; }
+.buttons_reg { margin-top: 10px; }
+.btn_reg { background-color: #f0f0f0; border: none; color: #000000; padding: 10px 10px;
+	text-align: center;  font-size: 14px; border: 1.5px solid #000000; border-radius: 20px; margin-right: 10px; }
+	.btn_reg:hover { background: #000000; color: #FFF; }
+.btn_vhod { background-color: #f0f0f0; border: none; color: #000000; padding: 10px 13px;
+	text-align: center;  font-size: 14px; border: 1.5px solid #f0f0f0; border-radius: 20px; }
+.btn_vhod:hover { /*border: 1.5px solid #000000 text-shadow: 0.4px 0 0.4px #000, 
+	0 0.4px 0.4px #000, -0.4px 0 0.4px #000, 0 -0.4px 0.4px #000;*/ -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: black; }
+
+/*.top_podborka { height: auto; display: flex; flex-direction: column; margin-top: 20px;
+background: #f0f0f0; border-radius: 10px; margin-bottom: 20px; }
+.top_podborka_nazv { display: flex; flex-direction: row; height: 30px; align-items: center; 
+margin-left: 15px; margin-top: 10px; font-size: 13px; margin-bottom: 20px; }
+.top_podborka_nazv img { width: 20px; height: 20px; margin-right: 8px; }
+.nfl21Menu { width: 150px; border-radius: 10px; margin-bottom: 20px; }*/
+
+/*.gor_podborka { width: 100%; height: auto; display: flex; flex-direction: column; margin-top: 100px;
+	background: #f0f0f0; border-radius: 10px; margin-bottom: 20px; }
+.gor_podborka_nazv { display: flex; flex-direction: row; height: 30px; align-items: center; 
+	margin-left: 15px; margin-top: 10px; margin-bottom: 20px; font-size: 16px; }
+.gor_podb_els { display: flex; flex-direction: row;}
+.gor_podb_el1 { font-size: 15px; background: #FFF; padding-bottom: 50px; margin-bottom: 20px; }
+	.nfl21Menu { width: 140px; margin-bottom: 20px; }*/
+
+.container1 { margin: 0; padding: 0; width: 100%; margin-top: 100px; height: auto; background: #000000;
+padding-bottom: 50px;}
+.intro_background { background-image: url(img/img_background.jpg); }
+.intro_pokupok { width: 1150px; height: 450px; display: flex; align-items: center; justify-content: flex-end; }
+.intro_pokupok { color: #ffffff; font-family: 'Open Sans Condensed', sans-serif;  font-size: 40px;
+margin-bottom: 50px; }
+/*.img_background { width: 100%; }*/
+.intro_obyavl {  font-family: 'Open Sans Condensed', sans-serif; font-size: 35px; line-height: 1; }
+.intro_obyavl h1 { font-family: 'Open Sans Condensed', sans-serif; font-size: 66px;
+line-height: 0.8; margin-bottom: 30px; }
+.avatarki_main img { width: 200px; }
+.avatarki_main {  display: flex; flex-direction: row; width: 55%; justify-content: space-between; }
+.intro_obyavl { display: flex; flex-direction: column; width: 45%; }
+.avatarki_main img:hover { background: rgb(255, 255, 255, 1); opacity: 0.5; }
+
+.menu_sale { display: flex; flex-direction: column; }
+.menu_sale_name { color: #ffffff;  font-family: 'Open Sans Condensed', sans-serif; font-size: 40px;
+margin-top: 100px; border-top: #FFF solid 1px; padding-top: 50px; display: flex; flex-direction: row;
+height: 100px; align-items: center; margin-bottom: 50px; }
+.menu_sale_name a { color: #2AC4F5; font-size: 30px; margin-left: 30px; margin-top: 8px;
+	border-bottom: #000000 solid 2px; }
+.menu_sale_name a:hover { border-bottom: #2AC4F5 solid 2px; }
+.menu_sale_elements { display: flex; flex-direction: row; justify-content: center; }
+.menu_sale_el1 { width: 150px; display: flex; flex-direction: column; 
+font-family: 'Open Sans', sans-serif; margin-right: 20px; }
+.menu_sale_el1:hover { box-shadow: #ffffff 0 0 5px 2px; }
+.menu_image:hover .menu_sale_el1 img { background: rgba(0, 0, 0, 0.9); opacity: 0.3; }
+.menu_sale_el1 img { max-width: 150px; height: 186px; }
+.menu_image { position: relative; }
+
+.menu_image_button { position:absolute; top: 80px; right: 25px; left: 25px; margin: 0;}
+.menu_image_button button { height: 40px; width: 100px; font-family: 'Open Sans', sans-serif; opacity: 0; }
+.menu_image:hover .menu_image_button button { opacity: 1; }
+
+.menu_sale_el1_opisanie { background: #ffffff; padding: 10px 10px 0; }
+.product_name { font-size: 14px; height: 55px; color: #1e262c; }
+.product_cost { color: #ff8c69; font-size: 20px;}
+.product_percent_minus {color: #04BD68; margin-bottom: 10px; }
+.product_last_cost { text-decoration: line-through; color: #787D85; margin-bottom: 10px; }
+
+/* footer */
+
+.fffooter {  background: #787d85; }
+.footer { height: auto; display: flex; flex-direction: row; justify-content: space-around; 
+font-size: 16px; color: #787D85; margin-top: 20px;}
+.footer a { max-width: 300px; padding-bottom: 5px; }
+.information_of_garantie { display: flex; flex-direction: column; width: 33%; }
+.uridic_information { display: flex; flex-direction: column; width: 33%; }
+.users_agreement { display: flex; flex-direction: column; width: 33%; }
+.footer { margin-bottom: 50px; }
+
+
+
+
+
+/****** Game_menu ******/
+
+.main_game { height: 500px; display: flex; justify-content: space-between; background: #000000; 
+color: #FFF; border-radius: 10px;}
+.main_game_icon { margin-top: 30px; margin-left: 30px; width: 350px; display: flex; flex-direction: column;
+ }
+.main_game_text { width: 650px; margin-top: 50px; margin-right: 50px; }
+#main_game_cost_now { font-size: 24px; color: #F56C2D; margin-top: 150px; margin-bottom: 0px; }
+.main_game_cost_sale { display: flex; flex-direction: row; font-size: 16px; color: #787D85; margin-bottom: 5px; }
+#main_game_economy { color: #04BD68; }
+#main_game_last_cost { text-decoration: line-through; }
+#dob_v_korzinu_btn { font-size: 16px; background: #F56C2D; color: #FFF;padding: 15px 32px; 
+text-align: center; text-decoration: none; display: inline-block; border: none; border-radius: 5px; }
+
+
+
+
+
+/*шрифты*/
+
+@font-face {
+	font-family: 'Alanta';
+	src: url('fonts/Alata-Regular.eot');
+	src: local('fonts/Alata-Regular'), local('fonts/Alata-Regular'),
+		url('fonts/Alata-Regular.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Alata-Regular.woff') format('woff'),
+		url('fonts/Alata-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Montserrat';
+	src: url('fonts/Montserrat-Regular.eot');
+	src: local('Montserrat Regular'), local('Montserrat-Regular'),
+		url('fonts/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Montserrat-Regular.woff') format('woff'),
+		url('fonts/Montserrat-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Arian AMU';
+	src: url('fonts/arnamu.eot');
+	src: local('fonts/arnamu'), local('fonts/arnamu'),
+		url('fonts/arnamu.eot?#iefix') format('embedded-opentype'),
+		url('fonts/arnamu.woff') format('woff'),
+		url('fonts/arnamu.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Open Sans Condensed';
+	src: url('fonts/OpenSans-CondBold.eot');
+	src: local('fonts/OpenSans-CondBold'), local('fonts/OpenSans-CondBold'),
+		url('fonts/OpenSans-CondBold.eot?#iefix') format('embedded-opentype'),
+		url('fonts/OpenSans-CondBold.woff') format('woff'),
+		url('fonts/OpenSans-CondBold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Open Sans Condensed';
+	src: url('fonts/OpenSans-CondLight.eot');
+	src: local('fonts/OpenSans-CondLight'), local('fonts/OpenSans-CondLight'),
+		url('fonts/OpenSans-CondLight.eot?#iefix') format('embedded-opentype'),
+		url('fonts/OpenSans-CondLight.woff') format('woff'),
+		url('fonts/OpenSans-CondLight.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url('fonts/OpenSans-Light.eot');
+	src: local('fonts/OpenSans-Light'), local('fonts/OpenSans-Light'),
+		url('fonts/OpenSans-Light.eot?#iefix') format('embedded-opentype'),
+		url('fonts/OpenSans-Light.woff') format('woff'),
+		url('fonts/OpenSans-Light.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
