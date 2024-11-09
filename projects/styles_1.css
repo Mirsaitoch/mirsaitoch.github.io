@@ -1,0 +1,140 @@
+.ad-container {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+.letter {
+    position: absolute;
+    font-size: 50px;
+    font-weight: bold;
+    transition: fill 1s;
+}
+
+.letter-s {
+    top: 110px;
+    left: 110px;
+}
+
+.letter-m {
+    top: 110px;
+    left: 40px;
+}
+
+.primitive {
+    top: 150px;
+    left: 40px;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(0, 17, 255);
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.primitive-s {
+    top: 150px;
+    left: 130px;
+    background-color: green;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.ad-container:hover .letter-s {
+    animation: curveS 2s infinite alternate;
+    fill: red;
+}
+
+.ad-container:hover .letter-m {
+    animation: curveM 2s infinite alternate;
+    fill: blue;
+}
+
+@keyframes curveS {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(35px, -20px); }
+    100% { transform: translate(-30px, -80px); }
+}
+
+@keyframes curveM {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-35px, -20px); }
+    100% { transform: translate(35px, -120px); }
+}
+
+input[type="checkbox"]:checked + label .letter-s {
+    animation: curveS 2s forwards;
+    fill: red;
+}
+
+input[type="checkbox"]:checked + label .letter-m {
+    animation: curveM 2s forwards;
+    fill: blue;
+}
+
+input[type="checkbox"]:checked + label .primitive {
+    opacity: 1;
+    animation: followPathM 4s forwards;
+}
+
+input[type="checkbox"]:checked + label .primitive-s {
+    opacity: 1;
+    animation: followPathS 4s forwards;
+}
+
+@keyframes followPathS {
+    0%   { transform: translate(0, 0); }
+    50%  { transform: translate(-12px, -15px); }
+    100%  { transform: translate(12px, -25px); }
+}
+
+@keyframes followPathM {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(0, -35px); }
+    50%  { transform: translate(15px, 0px); }
+    75%  { transform: translate(25px, -35px); }
+    100% { transform: translate(40px, 0); }
+}
+
+input[type="checkbox"]:checked + label .letter-s,
+input[type="checkbox"]:checked + label .letter-m {
+    animation: jump 1s 2 forwards 3.5s;
+}
+
+@keyframes jump {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(0); }
+    40% { transform: translateX(-20px); }
+    60% { transform: translateX(20px); }
+}
+
+.image, .text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.5s;
+}
+
+.image {
+    filter: sepia(100%);
+}
+
+.text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(130, 41, 41);
+}
+
+input[type="checkbox"]:checked + label .image,
+input[type="checkbox"]:checked + label .text {
+    opacity: 1;
+    transition-delay: 5s;
+}

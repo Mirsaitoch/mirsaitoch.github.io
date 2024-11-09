@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="images/favicon-32x32.png" type="image/x-icon"/>
+
+    <title>Mirsait</title>
+    <meta name="description" content="Mirsait"/>
+
+    <!-- box icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"/>
+
+    <!-- lang icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/css/flag-icons.min.css"/>
+
+    <!-- css -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<!-------------- HEADER -------------->
+
+<header class="header">
+    <a href="#home" class="logo"><span>M</span>R<span>S</span></a>
+
+    <i class="bx bx-menu" id="menu-icon"></i>
+
+    <nav class="navbar">
+        <a href="#about" class="active">Обо мне</a>
+        <a href="#services" class="active">Навыки</a>
+        <a href="#portfolio" class="active">Проекты</a>
+        <a href="index.html" class="active lang"><span class="fi fi-us"></span></a>
+    </nav>
+</header>
+
+<!-------------- HOME -------------->
+
+<section class="home" id="home">
+    <div class="home-content">
+        <h1>Мирсаит Сабирзянов</h1>
+        <h3>И я <span class="multiple-text"></span></h3>
+        <p>Инженер-программист в компании "Яндекс", базирующейся в Санкт-Петербурге, родом из Казани. Мне 20 лет, и я учусь в Санкт-Петербургском политехническом университете Петра Великого (Спбпу).</p>
+        <div class="social-media">
+            <a href="https://github.com/Mirsaitoch" target="_blank"><i class='bx bxl-github'></i></a>
+            <a href="https://t.me/mir_sab" target="_blank"><i class='bx bxl-telegram'></i></a>
+        </div>
+    </div>
+
+    <div class="home-img">
+        <img src="images/ava.JPG" alt="Круглое фото">
+    </div>
+</section>
+
+<!-------------- ABOUT -------------->
+
+<section class="about" id="about">
+    <div class="about-img">
+        <img src="images/ava_2.JPG" alt="Круглое фото">
+    </div>
+
+    <div class="about-content">
+        <h2 class="heading">Обо <span>мне</span></h2>
+        <h3>Middle iOS Developer</h3>
+        <p>Всем привет! Меня зовут Мирсаит, и я iOS разработчик. Мой основной фокус — это SwiftUI и UIKit, и я планирую развиваться в этом направлении. Я также успешно запустил продукт с использованием Backend Driven UI (BDUI).</p>
+    </div>
+
+</section>
+
+<!-------------- SERVICES -------------->
+
+<section class="services" id="services">
+    <h2 class="heading">Мои <span>навыки</span></h2>
+
+    <div class="services-container">
+        <!-- iOS Development -->
+        <div class="services-box">
+            <i class="bx bxl-apple"></i>
+            <h3>iOS Разработка</h3>
+            <ul>
+                <!-- Programming Languages -->
+                <li><strong>Языки программирования:</strong> Swift, Kotlin, Python</li>
+
+                <!-- Frameworks -->
+                <li><strong>Фреймворки:</strong> SwiftUI, UIKit</li>
+
+                <!-- Tools -->
+                <li><strong>Инструменты:</strong> Xcode, CocoaPods, Git, SPM</li>
+
+                <!-- Networking -->
+                <li><strong>Работа с сетью:</strong> URLSession</li>
+
+                <!-- Concurrency -->
+                <li><strong>Многопоточность:</strong> GCD, Swift Concurrency</li>
+
+                <!-- Design Patterns -->
+                <li><strong>Паттерны проектирования:</strong> MVC, MVVM, VIPER</li>
+
+                <!-- Data Management -->
+                <li><strong>Работа с данными:</strong> CoreData, SwiftData</li>
+
+                <!-- Additional Knowledge -->
+                <li><strong>Дополнительные знания:</strong> MapKit, PushKit, HealthKit, DivKit</li>
+
+                <!-- Interface Design -->
+                <li><strong>Проектирование интерфейсов:</strong> Autolayout, работа с макетами в Figma</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-------------- PORTFOLIO -------------->
+
+<section class="portfolio" id="portfolio">
+    <h2 class="heading">Мои <span>проекты</span></h2>
+
+    <div class="portfolio-container">
+        <div class="portfolio-box" data-project="project_1">
+            <img src="images/turtle.png" alt="Миниатюра проекта">
+            <div class="portfolio-layer">
+                <h4>Рисунок CSS</h4>
+                <a href="projects/picture/project_2.html" target="_blank"><i class='bx bx-link-external'></i></a>
+            </div>
+        </div>
+
+        <div class="portfolio-box" data-project="project_1">
+            <img src="images/project-thumbnail1.png" alt="Миниатюра проекта">
+            <div class="portfolio-layer">
+                <h4>Flexbox-бренд</h4>
+                <a href="projects/project_1.html" target="_blank"><i class='bx bx-link-external'></i></a>
+            </div>
+        </div>
+
+        <div class="portfolio-box" data-project="project_1">
+            <img src="images/quiz.png" alt="Миниатюра проекта">
+            <div class="portfolio-layer">
+                <h4>DOM-Тест-Quiz</h4>
+                <a href="projects/quiz/project_3.html" target="_blank"><i class='bx bx-link-external'></i></a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-------------- FOOTER -------------->
+
+<footer class="footer">
+    <div class="footer-text">
+        <p>Copyright &copy; 2024</p>
+    </div>
+
+    <div class="footer-icon-top">
+        <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+    </div>
+</footer>
+
+<!-------------- SCROLL REVEAL -------------->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!-------------- TYPED JS -------------->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+<!-------------- CUSTOM JS -------------->
+<script src="script.js"></script>
+
+</body>
+</html>
