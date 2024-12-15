@@ -33,16 +33,6 @@ h1, h2, h3 {
     border-radius: 10px;
 }
 
-#blueBlock {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    padding: 10px;
-    border: 1px solid blue;
-    border-radius: 10px;
-    height: 400px;
-}
-
 #parseButton {
     padding: 10px 20px;
     background-color: #4CAF50;
@@ -51,12 +41,12 @@ h1, h2, h3 {
     border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
-    width: 40%;
+    width: 50%;
     transition: background-color 0.3s, transform 0.2s;
 }
 
 #wordInput {
-    width: 50%;
+    width: 100%;
     box-sizing: border-box;
     height: 20px;
     padding: 5px 10px;
@@ -78,15 +68,22 @@ h1, h2, h3 {
 }
 
 .block-2 {
-    width: 30%;
-    background-color: rgba(0, 115, 230, 0.51);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid blue;
+    border-radius: 10px;
+    height: 400px;
+    background-color: rgba(180, 207, 237, 0.51);
     box-sizing: border-box;
-    height: 100px;
-    overflow: auto;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .input-output {
-    width: 70%;
+    width: 100%;
     padding: 10px;
 }
 
@@ -107,15 +104,15 @@ h1, h2, h3 {
 }
 
 #clickInfo {
-    background-color: #f0f0f0; /* Light gray background for contrast */
-    color: #333; /* Dark gray text color for readability */
-    padding: 10px; /* Add padding for spacing inside the div */
-    border: 1px solid #ccc; /* Light border for definition */
-    border-radius: 5px; /* Slightly round the corners */
-    font-size: 14px; /* Set font size for readability */
-    margin-top: 10px; /* Space above the element */
-    width: 100%; /* Full width of the parent container */
-    box-sizing: border-box; /* Include padding and border in the element's total width */
-    overflow-y: auto; /* Allow vertical scrolling if content overflows */
-    max-height: 150px; /* Limit the height to prevent excessive scrolling */
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    max-height: 150px;
 }

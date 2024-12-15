@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shape Cutter Game</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .hidden {
+            display: none;
+        }
+        #container {
+            width: 600px;
+            text-align: center;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        input {
+            padding: 8px;
+            width: 60%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        canvas {
+            border: 1px solid black;
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="startPage">
+        <h1>Welcome to Shape Cutter!</h1>
+        <p>Enter your name to start</p>
+        <input type="text" id="playerName" placeholder="Your name">
+        <button onclick="startGame()">Start Game</button>
+    </div>
+
+    <div id="gamePage" class="hidden">
+        <h1 id="welcomeMessage"></h1>
+        <canvas id="canvas" width="600" height="400"></canvas>
+        <div id="info">Draw a line to cut the shape.</div>
+        <button id="finishGameButton">Finish Game</button>
+        <button id="nextRoundButton" class="hidden">Next Round</button>
+    </div>
+
+    <div id="endPage" class="hidden">
+        <h1>Game Over!</h1>
+        <p id="finalScore"></p>
+        <button onclick="restartGame()">Play Again</button>
+        <button onclick="showRanking()">Show Ranking</button>
+    </div>
+
+    <div id="rankingPage" class="hidden">
+        <h1>Player Ranking</h1>
+        <ul id="rankingList"></ul>
+        <button onclick="returnToStart()">Back to Start</button>
+    </div>
+</div>
+<script src="cut.js"></script>
+</body>
+</html>

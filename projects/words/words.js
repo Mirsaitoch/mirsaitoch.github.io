@@ -7,11 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const clickInfo = document.getElementById('clickInfo');
 
     let wordClicks = {};
-    let initialOrder = [];
 
     // Делим слова
     parseButton.addEventListener('click', () => {
         const input = wordInput.value.trim();
+
+        if (/--+/.test(input)) {
+            alert('Нельзя использовать подряд идущие дефисы.');
+            return;
+        }
+
         const words = input.split('-').map(word => word.trim());
         const sortedWords = sortWords(words);
 
@@ -19,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
         blueBlock.innerHTML = '';
         outputField.innerHTML = '';
         wordClicks = {};
-        initialOrder = sortedWords.map(wordObj => wordObj.word);
 
         sortedWords.forEach((wordObj) => {
             const { key, word } = wordObj;
@@ -69,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         oval.textContent = text;
         oval.classList.add('oval');
         oval.draggable = true;
+        oval.style.width = '100px';
         return oval;
     }
 
@@ -112,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!oval) {
             oval = createOvalElement(text);
+            oval.style.width = 100
             oval.style.backgroundColor = getRandomColor();
             oval.dataset.word = word;
             oval.dataset.key = key;
@@ -124,15 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 topBlock.removeChild(originalOval);
             }
         }
-
-        const blueBlockRect = blueBlock.getBoundingClientRect();
-        const topBlockRect = topBlock.getBoundingClientRect();
-        const offsetX = e.clientX - blueBlockRect.left;
-        const offsetY = e.clientY - blueBlockRect.top;
-        oval.style.position = 'absolute';
-        oval.style.left = `${offsetX}px`;
-        oval.style.top = `${offsetY + topBlockRect.height * 2.0}px`;
-    });
+        oval.style.transform = `translate(${e.offsetX - oval.clientWidth}px, ${e.offsetY - oval.clientHeight}px)`;
+    }
+    );
 
 
     topBlock.addEventListener('dragover', (e) => {

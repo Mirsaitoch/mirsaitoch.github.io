@@ -6,7 +6,7 @@ const questionContainer = document.getElementById('questionContainer');
 const statisticDiv = document.getElementById('statistic');
 
 const questions = [
-  {
+    {
     question: "А голос у него был не такой, как у почтальона Печкина, дохленький. У Гаврюши голосище был, как у электрички. Он _____ _____ на ноги поднимал.",
     answers: ["Пол деревни, за раз", "Полдеревни, зараз", "Пол-деревни, за раз"],
     correct: 1,
@@ -30,7 +30,7 @@ const questions = [
     correct: 2,
     explanation: "Верно! Это слово пишется так: «эпИлепсия»."
   }
-];
+  ];
 
 
 nextQuestionBtn.addEventListener('click', () => {
@@ -87,7 +87,7 @@ function checkAnswer(selectedIndex, questionBlock, selectedAnswerBlock) {
   }
 
   allAnswerBlocks.forEach((block, index) => {
-    if (index != selectedIndex || index != correctIndex) {
+    if (index !== selectedIndex || index !== correctIndex) {
       setTimeout(() => {
         block.classList.add('slide-down');
       }, index * 200);
