@@ -131,7 +131,7 @@ function splitPolygonAndCalculate() {
                 .map((p) => p.toFixed(2))
                 .join("%, ")}%`;
 
-            const allCloseToEqual = percentages.every((p) => Math.abs(p - 33.33) <= 5);
+            const allCloseToEqual = percentages.every((p) => Math.abs(p - 33.33) <= 7);
 
             if (allCloseToEqual) {
                 score++;
@@ -168,7 +168,7 @@ function splitPolygonAndCalculate() {
 
         infoDiv.textContent = `Площадь частей: ${percentageLeft.toFixed(2)}%, ${percentageRight.toFixed(2)}%`;
 
-        if (Math.abs(percentageLeft - 50) <= 5) {
+        if (Math.abs(percentageLeft - 50) <= 7) {
             score++;
             canvas.style.border = "3px solid green";
             infoDiv.textContent += " - Идеальный разрез! \n Очки: " + String(score);
@@ -203,7 +203,7 @@ function startGame() {
 
 function finishGame() {
     currentRound = 0;
-    currentLevel = 0;
+    currentLevel = 1;
     gamePage.classList.add("hidden");
     menu.style.display = "none";
     endPage.classList.remove("hidden");
