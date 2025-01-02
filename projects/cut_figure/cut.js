@@ -9,6 +9,7 @@ const finalScore = document.getElementById("finalScore");
 const rankingList = document.getElementById("rankingList");
 const finishGameButton = document.getElementById("finishGameButton");
 const nextRoundButton = document.getElementById("nextRoundButton");
+const menu = document.getElementById("menu");
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -19,30 +20,28 @@ let playerName = "";
 let polygon = [];
 let isDrawing = false;
 let startX, startY, endX, endY;
-let gameInProgress = true;
 let hasCut = false;
 
 let currentLevel = 1;
 let currentRound = 0;
 
 const difficultySettings = {
-    easy: { sides: 3, size: 100 },
-    medium: { sides: 4, size: 150 },
-    hard: { sides: 5, size: 200 }
+    easy: { sides: 3, size: 100, cuts: 1 },
+    medium: { sides: 4, size: 150, cuts: 1 },
+    hard: { sides: 5, size: 200, cuts: 2 }
 };
 
-
 function startNewLevel() {
-    console.log(currentRound, currentLevel)
     if (currentRound < 3) {
         currentRound++;
     } else {
         if (currentLevel < 3) {
-            currentRound = 1
+            currentRound = 1;
             currentLevel++;
         }
-        if (currentLevel === 3 && currentRound === 3 ) {
-            finishGame()
+        if (currentLevel === 3 && currentRound === 3) {
+            finishGame();
+            return;
         }
     }
 
@@ -53,48 +52,135 @@ function startNewLevel() {
     polygon = generateRandomPolygon(difficulty);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawPolygon(polygon);
+
+    infoDiv.textContent =
+        currentLevel === 3
+            ? `Раунд ${currentRound} уровня ${currentLevel}: Разделите фигуру на три равные части.`
+            : `Раунд ${currentRound} уровня ${currentLevel}: Разделите фигуру на две равные части.`;
+
+
+    firstCutComplete = false;
+    firstCutParts = null;
     nextRoundButton.classList.add("hidden");
-    infoDiv.textContent = `Round ${currentRound} of Level ${currentLevel}: Draw a line to cut the shape.`;
+    canvas.style.border = "1px solid black";
     hasCut = false;
 }
+
 
 function startNewRound() {
     startNewLevel();
 }
 
 function splitPolygonAndCalculate() {
-    if (hasCut) return;
-
     const lineStart = { x: startX, y: startY };
     const lineEnd = { x: endX, y: endY };
 
-    const { left, right } = splitPolygon(polygon, lineStart, lineEnd);
+    if (currentLevel === 3) {
+        if (!firstCutComplete) {
+            const { left, right } = splitPolygon(polygon, lineStart, lineEnd);
 
-    const totalArea = calculatePolygonArea(polygon);
-    const leftArea = calculatePolygonArea(left);
-    const rightArea = calculatePolygonArea(right);
+            if (!left.length || !right.length) {
+                infoDiv.textContent = "Первый разрез некорректный. Попробуйте снова.";
+                canvas.style.border = "3px solid red";
+                return;
+            }
 
-    const percentageLeft = (leftArea / totalArea) * 100;
-    const percentageRight = (rightArea / totalArea) * 100;
+            firstCutComplete = true;
+            firstPart = left;
+            secondPart = right;
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawPolygon(left, 'lightblue');
-    drawPolygon(right, 'lightgreen');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawPolygon(left, "lightblue");
+            drawPolygon(right, "lightgreen");
 
-    infoDiv.textContent = `Area 1: ${percentageLeft.toFixed(2)}%, Area 2: ${percentageRight.toFixed(2)}%`;
+            infoDiv.textContent = "Первый разрез выполнен. Теперь сделайте второй разрез.";
+            return;
+        } else {
+            const { left: leftSplit, right: rightSplit } = splitPolygon(firstPart, lineStart, lineEnd);
+            let thirdPart;
 
-    if (Math.abs(percentageLeft - 50) <= 5 && Math.abs(percentageRight - 50) <= 5) {
-        score++;
-        infoDiv.textContent += " - Perfect Split! \n Score: " + String(score);
-    } else if (Math.abs(percentageLeft - 50) > 20 || Math.abs(percentageRight - 50) > 20) {
-        score--;
-        infoDiv.textContent += " - Bad Split! \n Score: " + String(score);
+            if (!leftSplit.length || !rightSplit.length) {
+                const secondSplit = splitPolygon(secondPart, lineStart, lineEnd);
+                if (secondSplit.left.length && secondSplit.right.length) {
+                    thirdPart = secondSplit.right;
+                    firstPart = secondSplit.left;
+                } else {
+                    infoDiv.textContent = "Второй разрез некорректный. Попробуйте снова.";
+                    canvas.style.border = "3px solid red";
+                    return;
+                }
+            } else {
+                thirdPart = rightSplit;
+                firstPart = leftSplit;
+            }
+
+            const totalArea = calculatePolygonArea(polygon);
+            const areas = [
+                calculatePolygonArea(firstPart),
+                calculatePolygonArea(secondPart),
+                calculatePolygonArea(thirdPart),
+            ];
+            const percentages = areas.map((area) => (area / totalArea) * 100);
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawPolygon(firstPart, "lightblue");
+            drawPolygon(secondPart, "lightgreen");
+            drawPolygon(thirdPart, "lightcoral");
+
+            infoDiv.textContent = `Площади частей: ${percentages
+                .map((p) => p.toFixed(2))
+                .join("%, ")}%`;
+
+            const allCloseToEqual = percentages.every((p) => Math.abs(p - 33.33) <= 5);
+
+            if (allCloseToEqual) {
+                score++;
+                canvas.style.border = "3px solid green";
+                infoDiv.textContent += " - Идеальный разрез! \n Очки: " + String(score);
+            } else {
+                score--;
+                canvas.style.border = "3px solid red";
+                infoDiv.textContent += " - Плохой разрез! \n Очки: " + String(score);
+            }
+
+            hasCut = true;
+            nextRoundButton.classList.remove("hidden");
+        }
     } else {
-        infoDiv.textContent += " Score: " + String(score);
-    }
+        const { left, right } = splitPolygon(polygon, lineStart, lineEnd);
 
-    hasCut = true;
-    nextRoundButton.classList.remove("hidden");
+        if (!left.length || !right.length) {
+            infoDiv.textContent = "Разрез некорректный. Попробуйте снова.";
+            canvas.style.border = "3px solid red";
+            return;
+        }
+
+        const totalArea = calculatePolygonArea(polygon);
+        const leftArea = calculatePolygonArea(left);
+        const rightArea = calculatePolygonArea(right);
+
+        const percentageLeft = (leftArea / totalArea) * 100;
+        const percentageRight = (rightArea / totalArea) * 100;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawPolygon(left, "lightblue");
+        drawPolygon(right, "lightgreen");
+
+        infoDiv.textContent = `Площадь частей: ${percentageLeft.toFixed(2)}%, ${percentageRight.toFixed(2)}%`;
+
+        if (Math.abs(percentageLeft - 50) <= 5) {
+            score++;
+            canvas.style.border = "3px solid green";
+            infoDiv.textContent += " - Идеальный разрез! \n Очки: " + String(score);
+        } else {
+            score--;
+            canvas.style.border = "3px solid red";
+            infoDiv.textContent += " - Плохой разрез! \n Очки: " + String(score);
+        }
+
+        hasCut = true;
+        nextRoundButton.classList.remove("hidden");
+    }
 }
 
 nextRoundButton.addEventListener('click', startNewRound);
@@ -104,15 +190,33 @@ const rankings = JSON.parse(localStorage.getItem("rankings")) || [];
 function startGame() {
     playerName = playerNameInput.value.trim();
     if (!playerName) {
-        alert("Please enter your name.");
+        alert("Пожалуйста, введите ваше имя.");
         return;
     }
     startPage.classList.add("hidden");
     gamePage.classList.remove("hidden");
-    welcomeMessage.textContent = `Welcome, ${playerName}!`;
+    menu.style.display = "block";
+    welcomeMessage.textContent = `Добро пожаловать, ${playerName}!`;
     score = 0;
-    console.log("score")
-    startNewRound();
+    startNewLevel();
+}
+
+function finishGame() {
+    currentRound = 0;
+    currentLevel = 0;
+    gamePage.classList.add("hidden");
+    menu.style.display = "none";
+    endPage.classList.remove("hidden");
+    finalScore.textContent = `${playerName}, ваш финальный счет: ${score}!`;
+    rankings.push({ name: playerName, score });
+    localStorage.setItem("rankings", JSON.stringify(rankings));
+}
+
+function restartGame() {
+    endPage.classList.add("hidden");
+    startPage.classList.remove("hidden");
+    menu.style.display = "none";
+    playerNameInput.value = "";
 }
 
 function drawPolygon(poly, color = 'lightblue') {
@@ -142,7 +246,6 @@ function generateRandomPolygon(difficulty) {
 
     return polygon;
 }
-
 
 // Формула площади Гаусса
 function calculatePolygonArea(poly) {
@@ -192,19 +295,9 @@ function splitPolygon(polygon, lineStart, lineEnd) {
         currentSide = nextSide;
     }
 
-    if (intersections.length !== 2) return { left: polygon, right: [] }; 
+    if (intersections.length !== 2) return { left: polygon, right: [] };
 
     return { left, right };
-}
-
-function finishGame() {
-    currentRound = 0
-    currentLevel = 0
-    gamePage.classList.add("hidden");
-    endPage.classList.remove("hidden");
-    finalScore.textContent = `${playerName}, your final score is ${score}!`;
-    rankings.push({ name: playerName, score });
-    localStorage.setItem("rankings", JSON.stringify(rankings));
 }
 
 function showRanking() {
@@ -219,15 +312,15 @@ function showRanking() {
     });
 }
 
-function restartGame() {
-    endPage.classList.add("hidden");
-    startPage.classList.remove("hidden");
-    playerNameInput.value = "";
-}
-
 function returnToStart() {
     rankingPage.classList.add("hidden");
     startPage.classList.remove("hidden");
+}
+
+function jumpToLevel(level) {
+    currentLevel = level;
+    currentRound = 0;
+    startNewLevel();
 }
 
 canvas.addEventListener('mousedown', (e) => {

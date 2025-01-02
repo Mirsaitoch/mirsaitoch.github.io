@@ -65,3 +65,12 @@ canvas {
 #finishGameButton, #nextRoundButton {
     margin-top: 20px;
 }
+
+.wrapper {
+    text-align: left;
+}
+
+.wrapper ul {
+    display: inline-block;
+    text-align: left;
+}
